@@ -22,12 +22,12 @@
 Архитектура проекта:
 
     '''Frontend (клиент)
-↓
-GraphQL API Gateway (Apollo Gateway)
-↓
-Users Service
-Products Service
-Orders Service
+    ↓
+    GraphQL API Gateway (Apollo Gateway)
+    ↓
+    Users Service
+    Products Service
+    Orders Service 
 
 Порты сервисов:
 - Gateway — localhost:4000
