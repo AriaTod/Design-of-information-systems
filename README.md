@@ -138,10 +138,10 @@ schema: buildSubgraphSchema({
 
 # Структура проекта
 Проект состоит из четырех независимых компонентов:
-├── gateway/
-├── users-service/
-├── products-service/
-└── orders-service/
+    ├── gateway/
+    ├── users-service/
+    ├── products-service/
+    └── orders-service/
 Каждый компонент имеет собственный файл package.json и запускается как отдельный процесс.
 
 # Установка зависимостей
@@ -191,66 +191,59 @@ Gateway будет доступен по адресу: http://localhost:4000 -  
 
 Для проверки работы системы можно выполнить следующий GraphQL-запрос:
 
-    '''query {
-      users {
+    query {
+        users {
+            id
+            name
+          }
+
+    products {
         id
-        name
+        title
+        price
       }
 
-let a = 10;
-``` [6](https://learn.microsoft.com/ru-ru/azure/devops/project/wiki/markdown-guidance?view=azure-devops)
-
-
-
-  products {
-    id
-    title
-    price
-  }
-
-  orders {
-    id
-    userId
-    productId
-  }
-}
+    orders {
+        id
+        userId
+        productId
+      }
+    }
 
 При успешном выполнении запроса будут возвращены данные из всех трех микросервисов через единый Gateway.
 
-Примеры CRUD-операций
-Создание пользователя
-mutation {
-  createUser(name: "Alex") {
-    id
-    name
-  }
-}
-Создание товара
-mutation {
-  createProduct(
-    title: "Monitor"
-    price: 300
-  ) {
-    id
-    title
-    price
-  }
-}
-Создание заказа
-mutation {
-  createOrder(
-    userId: "1"
-    productId: "1"
-  ) {
-    id
-    userId
-    productId
-  }
-}
-Остановка приложения
+# Примеры CRUD-операций
+1. Создание пользователя
 
-Для остановки любого сервиса необходимо перейти в соответствующий терминал и нажать:
+    mutation {
+      createUser(name: "Alex") {
+        id
+        name
+      }
+    }
+   
+2. Создание товара
 
-Ctrl + C
+    mutation {
+      createProduct(
+        title: "Monitor"
+        price: 300
+      ) {
+        id
+        title
+        price
+      }
+    }
 
-После остановки Gateway или одного из микросервисов часть функциональности системы станет недоступной до повторного запуска соответствующего компонента.
+3. Создание заказа
+
+    mutation {
+      createOrder(
+        userId: "1"
+        productId: "1"
+      ) {
+        id
+        userId
+        productId
+      }
+    }
